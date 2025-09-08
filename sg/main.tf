@@ -17,6 +17,14 @@ resource "aws_security_group" "alb_sg" {
     cidr_blocks = var.all_cidr
   }
 
+  ingress {
+    description = "Allow HTTP traffic"
+    from_port   = 3306
+    to_port     = 3306
+    protocol    = "tcp"
+    cidr_blocks = var.all_cidr
+  }
+
  
   ingress {
     description = "Allow HTTPS traffic"
