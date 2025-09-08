@@ -16,7 +16,7 @@ module "security_group_ec2" {
   source = "./sg"
   name = "sg-${local.name_suffix}"
   all_cidr = var.all_cidr
-  vpc = var.vpc
+  vpc = module.vpc.vpc_id
 }
 
 module "ec2_instance" {
