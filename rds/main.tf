@@ -9,8 +9,8 @@ resource "aws_db_instance" "main" {
   name                 = var.db_name
   username             = var.db_username
   password             = var.db_password
-  db_subnet_group_name = aws_subnet.private.name
-  vpc_security_group_ids = [aws_security_group.alb_sg.id]
+  db_subnet_group_name = vpc.private_subnet_id
+  vpc_security_group_ids = [sg.sg_id]
   skip_final_snapshot  = true
   tags = {
     Name = "db-${local.name_suffix}"

@@ -23,3 +23,8 @@ variable "name" {
   type        = string
   #default     = "rds"
 }
+variable "vpc_cidr" {
+  description = "VPC cidr"
+  type        = string
+  #default     = "o.0.0.0/0"
+}
