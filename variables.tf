@@ -18,25 +18,11 @@ variable "region" {
   type        = string
   default     = "us-east-1"
 }
-variable "name" {
-  description = "The EC2 instance type"
-  type        = string
-  default     = "rds"
-}
 variable "all_cidr" {
   description = "VPC cidr"
   type        = string
   default     = "0.0.0.0/0"
 }
-
-variable "name" {
-  description = "The EC2 instance type"
-  type        = string
-  default     = "rds"
-}
-
-
-
 variable "ami_id" {
   description = "ami id"
   type        = string
@@ -47,11 +33,7 @@ variable "instance_type" {
   type        = string
   default     = "t2.micro"
 }
-variable "name" {
-  description = "common name"
-  type        = string
-  default     = "rds"
-}
+
 variable "subnet_id" {
   description = "subnet id"
   type        = string
@@ -67,8 +49,6 @@ variable "key_name" {
   type        = string
   default     = "k8s.pem"
 }
-
-
 variable "allocated_storage" {
   description = "VPC cidr"
   type        = string
@@ -98,9 +78,4 @@ variable "db_password" {
   description = "db password"
   type        = string
   default     = "kamal321"
-}
-variable "name" {
-  description = "common name"
-  type        = string
-  default     = "rds"
 }
