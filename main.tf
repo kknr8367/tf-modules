@@ -24,7 +24,7 @@ module "ec2_instance" {
   source = "./ec2"
   ami_id = var.ami_id
   instance_type = var.instance_type
-  subnet_id = aws_subnet.public.id
+  subnet_id = output.private_subnet_id.id
   security_group_id = module.security_group_ec2.sg_id
   key_name = var.key_name
   name = "ec2-${local.name_suffix}"
