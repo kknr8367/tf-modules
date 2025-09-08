@@ -8,7 +8,7 @@ module "vpc" {
   public_cidr = var.public_cidr
   private_cidr = var.private_cidr
   region = var.region
-  #all_cidr = var.all_cidr
+  all_cidr = var.all_cidr
   name = "vpc-${local.name_suffix}"
 }
 
