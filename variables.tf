@@ -37,12 +37,12 @@ variable "instance_type" {
 variable "subnet_id" {
   description = "subnet id"
   type        = string
-  default     = aws_subnet.public.id
+  #default     = aws_subnet.public.id
 }
 variable "security_group_id" {
   description = "db user name"
   type        = string
-  default     = aws_security_group.alb_sg.id
+  #default     = aws_security_group.alb_sg.id
 }
 variable "key_name" {
   description = "key pair name"

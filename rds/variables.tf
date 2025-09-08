@@ -8,7 +8,7 @@ variable "engine" {
   type        = string
   #default     = "mysql"
 }
-variable "db.instance_class" {
+variable "db_instance_class" {
   description = "The instance type"
   type        = string
   #default     = "t2.micro"
