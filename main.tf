@@ -26,13 +26,14 @@ module "ec2_instance" {
   subnet_id = aws_subnet.public.id
   security_group_id = module.security_group_ec2.sg_id
   key_name = var.key_name
-  instance_name = "ec2-${local.name_suffix}"
-
+  name = "ec2-${local.name_suffix}"
+/*
   user_data = templatefile("./templates/user_data.sh.tpl", {
     rds_endpoint = module.rds_db.db_endpoint
     rds_username = var.db_username
     rds_password = var.db_password
   })
+  */
 }
 
 module "rds_db" {
