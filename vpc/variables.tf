@@ -1,31 +1,11 @@
-variable "vpc_cidr" {
-  description = "VPC cidr"
-  type        = string
-  #default     = "10.0.0.0/16"
+variable "vpc_name" {}
+variable "vpc_cidr" {}
+variable "public_subnet_cidrs" {
+  type = list(string)
 }
-variable "public_cidr" {
-  description = "Public subnet cidr"
-  type        = string
-  #default     = "10.0.1.0/24"
+variable "private_subnet_cidrs" {
+  type = list(string)
 }
-variable "private_cidr" {
-  description = "The EC2 instance type"
-  type        = string
-  #default     = "10.0.2.0/24"
-}
-variable "private_cidr1" {
-  description = "The EC2 instance type"
-  type        = string
-  default     = "10.0.3.0/24"
-}
-variable "region" {
-  description = "The EC2 instance type"
-  type        = string
-  #default     = "us-east-1"
-}
-
-variable "all_cidr" {
-  description = "VPC cidr"
-  type        = string
-  #default     = "o.0.0.0/0"
+variable "azs" {
+  type = list(string)
 }
