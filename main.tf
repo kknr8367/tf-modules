@@ -17,6 +17,7 @@ module "security_group_ec2" {
   name = "sg-${local.name_suffix}"
   all_cidr = var.all_cidr
   vpc = module.vpc.vpc_id
+  depends_on = [module.vpc]
 }
 
 module "ec2_instance" {
@@ -27,6 +28,7 @@ module "ec2_instance" {
   security_group_id = module.security_group_ec2.sg
   key_name = var.key_name
   name = "ec2-${local.name_suffix}"
+  depends_on = [module.security_group_ec2]
   /*
   user_data = templatefile("${path.module}/templates/user_data.sh.tpl", {
     rds_endpoint = module.rds_db.db_endpoint
