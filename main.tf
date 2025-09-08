@@ -22,8 +22,8 @@ module "ec2_instance" {
   source = "./ec2"
   ami_id = var.ami_id
   instance_type = var.instance_type
-  subnet_id = sg.public_subnet_id
-  security_group_id = sg.sg_id
+  subnet_id = module.vpc.public_subnet_id
+  security_group_id = module.sg.sg_id
   key_name = var.key_name
   name = "ec2-${local.name_suffix}"
   /*
