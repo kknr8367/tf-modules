@@ -41,7 +41,7 @@ module "rds_db" {
   allocated_storage = var.allocated_storage
   engine = var.engine
   db_instance_class = var.db_instance_class
-  db_subnet_group_name = module.vpc.subnet_group
+  subnet_group = module.vpc.subnet_group
   db_name = var.db_name
   db_username = var.db_username
   db_password = var.db_password
