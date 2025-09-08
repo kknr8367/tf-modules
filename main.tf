@@ -1,3 +1,7 @@
+locals {
+  name_suffix = split("-", var.name)[1]
+}
+
 module "vpc" {
   source = "./vpc"
   vpc_cidr = var.vpc_cidr
@@ -33,12 +37,13 @@ module "ec2_instance" {
 
 module "rds_db" {
   source = "./rds"
+  name = "db-${local.name_suffix}"
   allocated_storage = var.allocated_storage
   engine = var.engine
-  instance_class = var.db_instance_class
+  db_instance_class = var.db_instance_class
   db_name = var.db_name
   db_username = var.db_username
   db_password = var.db_password
-  db_subnet_group_name = aws_subnet.public.id
-  security_group_id = module.security_group_rds.sg_id
+  #db_subnet_group_name = aws_subnet.public.id
+  #security_group_id = module.security_group_rds.sg_id
 }
