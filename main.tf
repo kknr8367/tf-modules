@@ -24,5 +24,5 @@ module "rds" {
   username         = "admin"
   password         = "yourSecurePassword123"
   subnet_ids       = module.vpc.private_subnets
-  sg_id            = module.security_group_rds.sg_id
+  sg_id            = module.security_group.sg_id
 }
