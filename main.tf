@@ -26,11 +26,13 @@ module "ec2_instance" {
   security_group_id = module.security_group_ec2.sg_id
   key_name = var.key_name
   name = "ec2-${local.name_suffix}"
+  /*
   user_data = templatefile("${path.module}/templates/user_data.sh.tpl", {
     rds_endpoint = module.rds_db.db_endpoint
     rds_username = var.db_username
     rds_password = var.db_password
   })
+  */
 }
 
 module "rds_db" {
