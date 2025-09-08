@@ -46,7 +46,7 @@ resource "aws_nat_gateway" "nat" {
 
 resource "aws_eip" "nat" {
   count = length(var.public_subnet_cidrs)
-  vpc   = true
+  domain   = "vpc"
 }
 
 resource "aws_route_table" "public" {
