@@ -14,9 +14,10 @@ module "vpc" {
 
 module "security_group_ec2" {
   source = "./sg"
-  sg_name = "sg-${local.name_suffix}"
-  sg_description = "Security group for EC2 & RDS"
-  vpc_id = module.vpc.vpc_id
+  name = "sg-${local.name_suffix}"
+  description = "Security group for EC2 & RDS"
+  vpc = module.vpc.vpc_id
+  all_cidr = var.all_cidr
 }
 
 module "ec2_instance" {
