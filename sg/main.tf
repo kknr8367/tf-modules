@@ -6,7 +6,7 @@ resource "aws_security_group" "alb_sg" {
   name        = "sg-${local.name_suffix}"
   description = "Allow inbound traffic on ports 80, 443, and 22"
    
-  vpc_id = module.sg.vpc_id
+  vpc_id = module.vpc.vpc_id
 
   
   ingress {
