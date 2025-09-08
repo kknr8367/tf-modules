@@ -8,5 +8,5 @@ output "private_subnet_id" {
   value = module.vpc.private_subnet_id
 }
 output "sg_id" {
-  value = module.sg.sg_id
+  value = module.security_group_ec2.sg
 }
