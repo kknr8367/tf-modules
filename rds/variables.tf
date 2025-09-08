@@ -28,11 +28,7 @@ variable "db_password" {
   type        = string
   #default     = "kamal321"
 }
-variable "name" {
-  description = "common name"
-  type        = string
-  #default     = "rds"
-}
+
 variable "subnet_group" {
   description = "subnet group"
   type        = string

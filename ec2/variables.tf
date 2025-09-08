@@ -8,11 +8,7 @@ variable "instance_type" {
   type        = string
   #default     = "t2.micro"
 }
-variable "name" {
-  description = "common name"
-  type        = string
-  #default     = "rds"
-}
+
 variable "subnet_id" {
   description = "subnet id"
   type        = string

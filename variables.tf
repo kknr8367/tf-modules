@@ -68,8 +68,3 @@ variable "db_password" {
   type        = string
   default     = "kamal321"
 }
-variable "name" {
-  description = "db password"
-  type        = string
-  default     = "rds"
-}
