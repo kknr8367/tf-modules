@@ -1,26 +1,23 @@
-terraform {
-  required_version = ">= 1.5.0"
-}
-
-resource "aws_db_subnet_group" "rds_subnet_group" {
-  name       = "${var.name}-subnet-group"
-  subnet_ids = var.subnet_ids
+resource "aws_instance" "public_ec2" {
+  ami                    = var.ami_id
+  instance_type          = var.instance_type
+  subnet_id              = var.public_subnet_id
+  vpc_security_group_ids = [var.sg_id]
+  associate_public_ip_address = true
 
   tags = {
-    Name = "${var.name}-subnet-group"
+    Name = "${var.name}-public-ec2"
   }
 }
 
-resource "aws_db_instance" "rds" {
-  identifier              = "${var.name}-db"
-  engine                  = var.engine
-  instance_class          = var.instance_class
-  allocated_storage       = var.allocated_storage
-  username                = var.username
-  password                = var.password
-  db_subnet_group_name    = aws_db_subnet_group.rds_subnet_group.name
-  vpc_security_group_ids  = [var.sg_id]
-  skip_final_snapshot     = true
-  publicly_accessible     = false
-  multi_az                = false
+resource "aws_instance" "private_ec2" {
+  ami                    = var.ami_id
+  instance_type          = var.instance_type
+  subnet_id              = var.private_subnet_id
+  vpc_security_group_ids = [var.sg_id]
+  associate_public_ip_address = false
+
+  tags = {
+    Name = "${var.name}-private-ec2"
+  }
 }

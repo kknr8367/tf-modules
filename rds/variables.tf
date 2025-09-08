@@ -1,18 +1,8 @@
-variable "name" {
-  type = string
+variable "name" {}
+variable "ami_id" {}
+variable "instance_type" {
+  default = "t3.micro"
 }
-variable "engine" {
-  default = "postgres"
-}
-variable "instance_class" {
-  default = "db.t3.micro"
-}
-variable "allocated_storage" {
-  default = 20
-}
-variable "username" {}
-variable "password" {}
-variable "subnet_ids" {
-  type = list(string)
-}
+variable "public_subnet_id" {}
+variable "private_subnet_id" {}
 variable "sg_id" {}

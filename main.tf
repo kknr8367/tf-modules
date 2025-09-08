@@ -26,3 +26,14 @@ module "rds" {
   subnet_ids       = module.vpc.private_subnets
   sg_id            = module.security_group.sg_id
 }
+
+
+module "ec2" {
+  source            = "./ec2"
+  name              = "my-app"
+  ami_id            = "ami-0c55b159cbfafe1f0" # Example for us-east-1
+  instance_type     = "t3.micro"
+  public_subnet_id  = module.vpc.public_subnets[0]
+  private_subnet_id = module.vpc.private_subnets[0]
+  sg_id             = module.security_group_rds.sg_id
+}
