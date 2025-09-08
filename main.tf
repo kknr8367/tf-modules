@@ -16,6 +16,7 @@ module "security_group_ec2" {
   source = "./sg"
   name = "sg-${local.name_suffix}"
   all_cidr = var.all_cidr
+  vpc = var.vpc
 }
 
 module "ec2_instance" {
@@ -42,6 +43,7 @@ module "rds_db" {
   engine = var.engine
   db_instance_class = var.db_instance_class
   subnet_group = module.vpc.subnet_group
+  sg = var.sg
   db_name = var.db_name
   db_username = var.db_username
   db_password = var.db_password

@@ -9,3 +9,4 @@ variable "name" {
   type        = string
   #default     = "rds"
 }
+variable "vpc" {}

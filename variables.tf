@@ -84,3 +84,10 @@ variable "name" {
   type        = string
   default     = "rds"
 }
+variable "sg" {
+  default = module.security_group_ec2.sg
+}
+
+variable "vpc" {
+  default = module.vpc.vpc_id
+}

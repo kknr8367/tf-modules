@@ -37,3 +37,4 @@ variable "subnet_group" {
   description = "subnet group"
   type        = string
 }
+variable "sg" {}
