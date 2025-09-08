@@ -3,10 +3,11 @@ provider "aws" {
 }
 
 terraform {
+  required_version = ">= 1.5.0" # Set a specific version constraint
   required_providers {
     aws = {
       source = "hashicorp/aws"
-      version = "~> 5.0"
+      version = "~> 5.0" # Fixes the next warning as well
     }
   }
 }

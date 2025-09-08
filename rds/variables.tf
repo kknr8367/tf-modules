@@ -1,4 +1,6 @@
-variable "name" {}
+variable "name" {
+  type = string
+}
 variable "engine" {
   default = "postgres"
 }

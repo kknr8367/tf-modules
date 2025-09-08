@@ -1,3 +1,7 @@
+terraform {
+  required_version = ">= 1.5.0"
+}
+
 resource "aws_security_group" "rds_sg" {
   name        = "${var.name}-rds-sg"
   description = "Allow RDS access"
