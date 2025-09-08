@@ -13,6 +13,11 @@ variable "private_cidr" {
   type        = string
   #default     = "10.0.2.0/24"
 }
+variable "private_cidr" {
+  description = "The EC2 instance type"
+  type        = string
+  default     = "10.0.3.0/24"
+}
 variable "region" {
   description = "The EC2 instance type"
   type        = string

@@ -19,7 +19,7 @@ resource "aws_subnet" "public" {
     Name = "public-subnet-${local.name_suffix}"
   }
 }
-resource "aws_subnet" "private" {
+resource "aws_subnet" "private1" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = var.private_cidr
   availability_zone       = var.region
@@ -29,6 +29,15 @@ resource "aws_subnet" "private" {
   }
 }
 
+resource "aws_subnet" "private2" {
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = var.private_cidr1
+  availability_zone       = var.region
+  map_public_ip_on_launch = true
+  tags = {
+    Name = "private-subnet2-${local.name_suffix}"
+  }
+}
 
 resource "aws_internet_gateway" "main" {
   vpc_id = aws_vpc.main.id
@@ -69,6 +78,16 @@ resource "aws_route_table_association" "public_associate1" {
   route_table_id = aws_route_table.public.id
 }
 resource "aws_route_table_association" "private_associate" {
-    subnet_id      = aws_subnet.private.id
+    subnet_id      = aws_subnet.private1.id
       route_table_id = aws_route_table.private.id
+}
+resource "aws_route_table_association" "private_associate" {
+    subnet_id      = aws_subnet.private2.id
+      route_table_id = aws_route_table.private.id
+}
+resource "aws_db_subnet_group" "default" {
+  subnet_ids = aws_subnet.private[*].id
+  tags = {
+    Name = "subgrp-${local.name_suffix}
+  }
 }
