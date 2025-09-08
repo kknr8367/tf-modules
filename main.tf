@@ -1,5 +1,5 @@
 locals {
-  name_suffix = split("-", var.name)[1]
+  name_suffix = split("-", var.name)
 }
 
 module "vpc" {

@@ -1,5 +1,5 @@
 locals {
-  name_suffix = split("-", var.name)[1]
+  name_suffix = split("-", var.name)
 }
 
 resource "aws_security_group" "alb_sg" {
