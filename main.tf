@@ -1,6 +1,3 @@
-locals {
-  name_suffix = "prod"
-}
 
 module "vpc" {
   source = "./vpc"
@@ -9,12 +6,13 @@ module "vpc" {
   private_cidr = var.private_cidr
   region = var.region
   all_cidr = var.all_cidr
-  name = "vpc-${local.name_suffix}"
+  name = "vpc-prod"
 }
 
+*/
 module "security_group_ec2" {
   source = "./sg"
-  name = "sg-${local.name_suffix}"
+  name = "sg-prod"
   all_cidr = var.all_cidr
   vpc = module.vpc.vpc_id
   depends_on = [module.vpc]
@@ -27,7 +25,7 @@ module "ec2_instance" {
   subnet_id = module.vpc.public_subnet_id
   security_group_id = module.security_group_ec2.sg
   key_name = var.key_name
-  name = "ec2-${local.name_suffix}"
+  name = "ec2-prod"
   depends_on = [module.security_group_ec2]
   /*
   user_data = templatefile("${path.module}/templates/user_data.sh.tpl", {
@@ -40,7 +38,7 @@ module "ec2_instance" {
 
 module "rds_db" {
   source = "./rds"
-  name = "db-${local.name_suffix}"
+  name = "db-prod"
   allocated_storage = var.allocated_storage
   engine = var.engine
   db_instance_class = var.db_instance_class
@@ -50,3 +48,4 @@ module "rds_db" {
   db_username = var.db_username
   db_password = var.db_password
 }
+*/
