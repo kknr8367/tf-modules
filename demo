@@ -1,0 +1,41 @@
+
+*/
+module "security_group_ec2" {
+  source = "./sg"
+  name = "sg-prod"
+  all_cidr = var.all_cidr
+  vpc = module.vpc.vpc_id
+  depends_on = [module.vpc]
+}
+
+module "ec2_instance" {
+  source = "./ec2"
+  ami_id = var.ami_id
+  instance_type = var.instance_type
+  subnet_id = module.vpc.public_subnet_id
+  security_group_id = module.security_group_ec2.sg
+  key_name = var.key_name
+  name = "ec2-prod"
+  depends_on = [module.security_group_ec2]
+  /*
+  user_data = templatefile("${path.module}/templates/user_data.sh.tpl", {
+    rds_endpoint = module.rds_db.db_endpoint
+    rds_username = var.db_username
+    rds_password = var.db_password
+  })
+  */
+}
+
+module "rds_db" {
+  source = "./rds"
+  name = "db-prod"
+  allocated_storage = var.allocated_storage
+  engine = var.engine
+  db_instance_class = var.db_instance_class
+  subnet_group = module.vpc.subnet_group
+  sg = module.security_group_ec2.sg
+  db_name = var.db_name
+  db_username = var.db_username
+  db_password = var.db_password
+}
+*/
