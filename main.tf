@@ -1,5 +1,5 @@
 module "vpc" {
-  source = "./modules/vpc"
+  source = "./vpc"
   vpc_cidr = var.vpc_cidr
   public_cidr = var.public_cidr
   private_cidr = var.private_cidr
@@ -9,14 +9,14 @@ module "vpc" {
 }
 
 module "security_group_ec2" {
-  source = "./modules/security_group"
+  source = "./sg"
   sg_name = "sg-${local.name_suffix}"
   sg_description = "Security group for EC2 & RDS"
   vpc_id = module.vpc.vpc_id
 }
 
 module "ec2_instance" {
-  source = "./modules/ec2"
+  source = "./ec2"
   ami_id = var.ami_id
   instance_type = var.instance_type
   subnet_id = aws_subnet.public.id
@@ -32,7 +32,7 @@ module "ec2_instance" {
 }
 
 module "rds_db" {
-  source = "./modules/rds"
+  source = "./rds"
   allocated_storage = var.allocated_storage
   engine = var.engine
   instance_class = var.db_instance_class
