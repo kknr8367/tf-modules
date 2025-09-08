@@ -1,36 +1,16 @@
-variable "allocated_storage" {
-  description = "VPC cidr"
-  type        = string
-  #default     = "20"
-}
+variable "name" {}
 variable "engine" {
-  description = "Public subnet cidr"
-  type        = string
-  #default     = "mysql"
+  default = "postgres"
 }
-variable "db_instance_class" {
-  description = "The instance type"
-  type        = string
-  #default     = "t2.micro"
+variable "instance_class" {
+  default = "db.t3.micro"
 }
-variable "db_name" {
-  description = "db name"
-  type        = string
-  #default     = "kamal-db"
+variable "allocated_storage" {
+  default = 20
 }
-variable "db_username" {
-  description = "db user name"
-  type        = string
-  #default     = "kamal-db"
+variable "username" {}
+variable "password" {}
+variable "subnet_ids" {
+  type = list(string)
 }
-variable "db_password" {
-  description = "db password"
-  type        = string
-  #default     = "kamal321"
-}
-
-variable "subnet_group" {
-  description = "subnet group"
-  type        = string
-}
-variable "sg" {}
+variable "sg_id" {}
