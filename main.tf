@@ -15,8 +15,6 @@ module "vpc" {
 module "security_group_ec2" {
   source = "./sg"
   name = "sg-${local.name_suffix}"
-  #description = "Security group for EC2 & RDS"
-  #vpc = module.vpc.vpc_id
   all_cidr = var.all_cidr
 }
 
@@ -24,17 +22,15 @@ module "ec2_instance" {
   source = "./ec2"
   ami_id = var.ami_id
   instance_type = var.instance_type
-  subnet_id = output.private_subnet_id.id
+  subnet_id = vpc.private_subnet_id
   security_group_id = module.security_group_ec2.sg_id
   key_name = var.key_name
   name = "ec2-${local.name_suffix}"
-/*
-  user_data = templatefile("./templates/user_data.sh.tpl", {
+  user_data = templatefile("${path.module}/templates/user_data.sh.tpl", {
     rds_endpoint = module.rds_db.db_endpoint
     rds_username = var.db_username
     rds_password = var.db_password
   })
-  */
 }
 
 module "rds_db" {
@@ -46,6 +42,4 @@ module "rds_db" {
   db_name = var.db_name
   db_username = var.db_username
   db_password = var.db_password
-  #db_subnet_group_name = aws_subnet.public.id
-  #security_group_id = module.security_group_rds.sg_id
 }
