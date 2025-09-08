@@ -33,7 +33,7 @@ variable "instance_type" {
   type        = string
   default     = "t2.micro"
 }
-
+*/
 variable "subnet_id" {
   description = "subnet id"
   type        = string
@@ -44,6 +44,7 @@ variable "security_group_id" {
   type        = string
   #default     = aws_security_group.alb_sg.id
 }
+*/
 variable "key_name" {
   description = "key pair name"
   type        = string
@@ -84,12 +85,3 @@ variable "name" {
   type        = string
   default     = "rds"
 }
-/*
-variable "sg" {
-  default = module.security_group_ec2.sg
-}
-
-variable "vpc" {
-  default = module.vpc.vpc_id
-}
-*/
