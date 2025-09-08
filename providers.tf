@@ -11,7 +11,7 @@ terraform {
   }
 }
 
-
+/*
 terraform {
   backend "s3" {
     bucket         = "terraform-kamalb"
@@ -20,3 +20,4 @@ terraform {
     encrypt        = true                          
   }
 }
+*/
