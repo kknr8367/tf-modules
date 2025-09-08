@@ -88,6 +88,6 @@ resource "aws_route_table_association" "private_associate1" {
 resource "aws_db_subnet_group" "default" {
   subnet_ids = aws_subnet.private[*].id
   tags = {
-    Name = "subgrp-${local.name_suffix}
+    Name = "subgrp-${local.name_suffix}"
   }
 }
