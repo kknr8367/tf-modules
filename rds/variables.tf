@@ -33,6 +33,7 @@ variable "name" {
   type        = string
   #default     = "rds"
 }
-variable "subnet_group"
+variable "subnet_group" {
   description = "subnet group"
-  type = "String"
+  type = "string"
+}
